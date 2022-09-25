@@ -54,6 +54,10 @@ class Reports(models.Model):
         verbose_name='Кол-во людей',
         null=True
     )
+    comment = models.TextField(
+        verbose_name='Комментарий',
+        blank=True
+    )
 
     def publish(self):
         self.created_date = datetime.datetime.now()

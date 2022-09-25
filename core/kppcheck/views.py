@@ -12,7 +12,7 @@ def showmap(request):
         map_zoom=5,
         map_longitude='71.430557',
         map_latitude='51.148239',
-        map_height="800px")
+        map_height="750px")
     context = {'posts': posts}
     # appenddicts = geomap | context  # Соединяем два дикта - контекст меток на карте и контекст значений
     appenddicts = {**geomap, **context}

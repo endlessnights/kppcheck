@@ -7,6 +7,7 @@ from .models import Kpps, Reports
 @admin.register(Kpps)
 class PublishCities(admin.ModelAdmin):
     list_display = [
+        'id',
         'name',
         'address',
     ]
@@ -15,6 +16,7 @@ class PublishCities(admin.ModelAdmin):
 @admin.register(Reports)
 class PublishCompanies(admin.ModelAdmin):
     list_display = [
+        'id',
         'kpp',
         'created_date',
         'ttw',
