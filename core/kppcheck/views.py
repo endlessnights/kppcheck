@@ -9,7 +9,7 @@ def showmap(request):
     posts = Kpps.objects.all()
     geomap = geomap_context(
         Kpps.objects.all(),
-        map_zoom=12,
+        map_zoom=5,
         map_longitude='71.430557',
         map_latitude='51.148239',
         map_height="800px")

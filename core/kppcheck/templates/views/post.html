@@ -6,12 +6,25 @@
 </head>
 <body>
 {% block content %}
+<div style="margin:15px;">
 КПП: {{post.name}}<br />
-Время ожидания: {{avgttw}}<br />
+{% if avgttw %}
+Время ожидания: {{avgttw}} часов<br />
+{% else %}
+Время ожидания: Неизвестно<br />
+{% endif %}
+{% if carcount %}
 Кол-во авто: {{carcount}}<br />
+{% endif %}
+{% if pcount %}
 Кол-во людей: {{pcount}}<br />
-Последнее обновление: {% for Reports in report|slice:":1" %} {{Reports.created_date}} {% endfor %}
+{% endif %}<br />
+Последнее обновление: <br />{% for Reports in report|slice:":1" %} {{Reports.created_date}} {% endfor %}<br />
 <a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на данный КПП</a>
+<div style="margin-top:100px;">
+    <a href="/">Вернуться на Главную страницу - карту</a>
+</div>
+</div>
 {% endblock %}
 </body>
 </html>
