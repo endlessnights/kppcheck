@@ -11,6 +11,7 @@
 Кол-во авто: {{carcount}}<br />
 Кол-во людей: {{pcount}}<br />
 Последнее обновление: {% for Reports in report|slice:":1" %} {{Reports.created_date}} {% endfor %}
+<a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на данный КПП</a>
 {% endblock %}
 </body>
 </html>

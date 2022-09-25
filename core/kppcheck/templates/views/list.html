@@ -17,9 +17,13 @@
                 <div class="row g-0">
                     <div class="col-md-9">
                         <div class="card-body">
+                            {% if Kpps.id %}
                             <iframe name="iframe1" src="kpp/{{Kpps.id}}" width="400" height="200" align="left">
                             </iframe>
-
+                            {% else %}
+                            <iframe name="iframe1" src="kpp/1" width="400" height="200" align="left">
+                            </iframe>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
