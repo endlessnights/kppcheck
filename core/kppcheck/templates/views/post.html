@@ -20,7 +20,7 @@
         {% if pcount %}
         Кол-во людей: {{pcount}}<br/>
         {% endif %}<br/>
-        Последнее обновление: <br/>{% for Reports in report|slice:":1" %} {{Reports.created_date}} {% endfor %}<br/>
+        Последнее обновление (GMT +6:00): <br/>{% for Reports in report|slice:":1" %} {{Reports.created_date}} {% endfor %}<br/>
         <a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на данный КПП</a><br/>
         <div style="margin-top:100px;">
             <a href="/">Вернуться на Главную страницу - карту.</a>
