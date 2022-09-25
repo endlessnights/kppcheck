@@ -6,24 +6,33 @@
 </head>
 <body>
 {% block content %}
-<div style="margin:15px;">
-КПП: {{post.name}}<br />
-{% if avgttw %}
-Время ожидания: {{avgttw}} часов<br />
-{% else %}
-Время ожидания: Неизвестно<br />
-{% endif %}
-{% if carcount %}
-Кол-во авто: {{carcount}}<br />
-{% endif %}
-{% if pcount %}
-Кол-во людей: {{pcount}}<br />
-{% endif %}<br />
-Последнее обновление: <br />{% for Reports in report|slice:":1" %} {{Reports.created_date}} {% endfor %}<br />
-<a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на данный КПП</a>
-<div style="margin-top:100px;">
-    <a href="/">Вернуться на Главную страницу - карту</a>
-</div>
+<div class="row">
+    <div class="col-lg-6">
+        КПП: {{post.name}}<br/>
+        {% if avgttw %}
+        Время ожидания: {{avgttw}} часов<br/>
+        {% else %}
+        Время ожидания: Неизвестно<br/>
+        {% endif %}
+        {% if carcount %}
+        Кол-во авто: {{carcount}}<br/>
+        {% endif %}
+        {% if pcount %}
+        Кол-во людей: {{pcount}}<br/>
+        {% endif %}<br/>
+        Последнее обновление: <br/>{% for Reports in report|slice:":1" %} {{Reports.created_date}} {% endfor %}<br/>
+        <a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на данный КПП</a><br/>
+        <div style="margin-top:100px;">
+            <a href="/">Вернуться на Главную страницу - карту.</a>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <a href="https://forms.gle/Y83TxxenyhJK1Wmx5" target="_blank"><button type="button" class="btn btn-success">Отправить отчет</button></a><br/>
+        <a href="https://t.me/pycarrot2" target="_blank">Хотите помочь улучшить сервис или есть вопросы/предложения?
+            Пожалуйста,
+            напишите мне.</a><br /><br />
+        <a href="https://exrates.geekcv.io" target="_blank">График и обменный курс МИР Рубль-Тенге</a>
+    </div>
 </div>
 {% endblock %}
 </body>
