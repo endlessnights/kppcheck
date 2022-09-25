@@ -1,0 +1,33 @@
+{% extends "../system/base.html" %}
+{% load static %}
+<html lang="en">
+<body>
+{% block content %}
+<head>
+    <title> Proto</title>
+</head>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="map">
+            <div>{% include "geomap/common.html" %}</div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+            <div class="card ms-4 mt-4 me-1 mb-3 p-3" style="max-width: 100%;">
+                <div class="row g-0">
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <iframe name="iframe1" src="kpp/{{Kpps.id}}" width="400" height="200" align="left">
+                            </iframe>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+
+</html>
