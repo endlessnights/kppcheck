@@ -23,10 +23,7 @@
         Кол-во людей: {{pcount}}<br/>
         {% endif %}<br/>
         Последнее обновление (GMT +6:00): <br/>{% for Reports in report %} {% if forloop.last %} {{Reports.created_date}} {% endif %}{% endfor %}<br/>
-        <a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на данный КПП</a><br/>
-        <div style="margin-top:100px;">
-            <a href="/">Вернуться на Главную страницу - карту.</a>
-        </div>
+        <a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на КПП + Подробности</a><br/>
     </div>
     <div class="col-lg-5">
         <b style="font-size:14pt;">Если вы сейчас стоите на границе или уже проехали, пожалуйста, отправьте нам отчет по загруженности КПП, это поможет другим людям!</b><br /><br />
@@ -37,6 +34,29 @@
     <div class="col-lg-3">
         {% for Reports in report %} {{Reports.comment}} {% endfor %}
     </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 m-3">
+        {% for Reports in report %}
+        {% if forloop.last %}
+        <h3>Последний отчет от {{Reports.created_date}}:</h3>
+        {% if Reports.ttw %}
+        Время ожидания: {{Reports.ttw}} часов<br />
+        {% else %}
+        Время ожидания: Неизвестно<br />
+        {% endif %}
+        {% if Reports.carcount %}
+        Кол-во авто: {{Reports.carcount}}<br />
+        {% endif %}
+        {% if Reports.pcount %}
+        Кол-во людей: {{Reports.pcount}}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div style="margin-top:100px;">
+            <a href="/">Вернуться на Главную страницу - карту.</a>
+        </div>
 </div>
 {% endblock %}
 </body>

@@ -11,6 +11,7 @@ class Kpps(models.Model, GeoItem):
     address = models.CharField(verbose_name='Адрес', max_length=300, blank=False)
     border = models.CharField(verbose_name='Граница', max_length=150, blank=True)
     worktime = models.CharField(verbose_name='Часы работы', max_length=100, blank=True)
+    tgchat = models.URLField(verbose_name='Чат КПП в Телеграм', max_length=200, blank=True)
     lon = models.FloatField(default='71.430557', null=False)  # longitude
     lat = models.FloatField(default='51.128239', null=False)  # latitude
 
