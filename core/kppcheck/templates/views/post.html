@@ -9,6 +9,8 @@
 <div class="row m-3">
     <div class="col-lg-3">
         КПП: {{post.name}}<br/>
+        Населенные пункты: {{post.address}}<br />
+        {% if post.worktime %} Часы работы: {{post.worktime}}<br />{% endif %}
         {% if avgttw %}
         Время ожидания: {{avgttw}} часов<br/>
         {% else %}

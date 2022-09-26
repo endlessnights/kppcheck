@@ -10,6 +10,7 @@ class Kpps(models.Model, GeoItem):
     name = models.CharField(verbose_name='Название', max_length=150, blank=False)
     address = models.CharField(verbose_name='Адрес', max_length=300, blank=False)
     border = models.CharField(verbose_name='Граница', max_length=150, blank=True)
+    worktime = models.CharField(verbose_name='Часы работы', max_length=100, blank=True)
     lon = models.FloatField(default='71.430557', null=False)  # longitude
     lat = models.FloatField(default='51.128239', null=False)  # latitude
 
@@ -23,7 +24,7 @@ class Kpps(models.Model, GeoItem):
 
     @property
     def geomap_popup_common(self):
-        return "<a href='kpp/{}' target='iframe1'>{}</a>".format(self.id, self.name)
+        return "<a href='kpp/{}' target='iframe1'>{}</a><br />Часы работы: {} <br />Адрес: {}".format(self.id, self.name, self.worktime, self.address)
 
     def __str__(self):
         return self.name
