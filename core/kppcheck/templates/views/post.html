@@ -7,42 +7,37 @@
 {% block content %}
 <title>Статистика КПП {{post.name}}</title>
 <div class="row m-3">
-    <div class="col-lg-3">
+    <div class="col-lg-4">
+        <a href="/kpp/{{post.id}}" target="_blank"><button type="button" class="btn btn-success"><b>Смотреть больше информации по КПП</b></button></a><br />
         КПП: {{post.name}}<br/>
         Населенные пункты: {{post.address}}<br />
         {% if post.worktime %} Часы работы: {{post.worktime}}<br />{% endif %}
         {% if avgttw %}
-        Время ожидания: {{avgttw}} часов<br/>
+        Время ожидания: ≈ {{avgttw}} часов<br/>
         {% else %}
         Время ожидания: Неизвестно<br/>
         {% endif %}
         {% if carcount %}
-        Кол-во авто: {{carcount}}<br/>
+        Кол-во авто: ≈ {{carcount}}<br/>
         {% endif %}
         {% if pcount %}
-        Кол-во людей: {{pcount}}<br/>
-        {% endif %}<br/>
-        Последнее обновление (GMT +6:00): <br/>{% for Reports in report %} {% if forloop.last %} {{Reports.created_date}} {% endif %}{% endfor %}<br/>
-        <a href="/kpp/{{post.id}}" target="_blank">Прямая ссылка на КПП + Подробности</a><br/>
-    </div>
-    <div class="col-lg-5">
-        <b style="font-size:14pt;">Если вы сейчас стоите на границе или уже проехали, пожалуйста, отправьте нам отчет по загруженности КПП, это поможет другим людям!</b><br /><br />
-        <a href="https://forms.gle/Y83TxxenyhJK1Wmx5" target="_blank"><button type="button" class="btn btn-warning"><b>Отправить отчет</b></button></a><br/><br />
-        <p>Хотите отблагодарить разработчика, сделайте добровольное пожертвование: Kaspi: +7 705 568 50 30 (Bakhti B.)</p>
-    </div>
-    <div class="col-lg-4">
-        {% for Reports in report %} {{Reports.comment}} {% endfor %}<br />
-        <hr>
+        Кол-во людей: ≈ {{pcount}}<br/>
+        {% endif %}
         <a href="https://t.me/pycarrot2" target="_blank">По вопросам и предложениям</a><br />
         <a href="https://bnb.geekcv.io" target="_blank">Поиск койко-места/ночлег в Казахстане</a><br />
         <a href="https://exrates.geekcv.io" target="_blank">График и обменный курс МИР Рубль-Тенге</a>
     </div>
+    <div class="col-lg-6">
+        <b style="font-size:14pt;">Если вы сейчас стоите на границе или уже проехали, пожалуйста, отправьте нам отчет по загруженности КПП, это поможет другим людям!</b><br /><br />
+        <a href="https://forms.gle/Y83TxxenyhJK1Wmx5" target="_blank"><button type="button" class="btn btn-warning"><b>Отправить отчет</b></button></a><br/><br />
+        <p>Хотите отблагодарить разработчика, сделайте добровольное пожертвование:<br /> Kaspi: +7 705 568 50 30 (Bakhti B.)</p>
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-6 m-3">
-        {% for Reports in report %}
-        {% if forloop.last %}
-        <h3>Последний отчет от {{Reports.created_date}}:</h3>
+        <h4>Последние 3 отчета:</h4>
+        {% for Reports in lastreports %}
+        <h6>Отчет от {{Reports.created_date}}:</h6>
         {% if Reports.ttw %}
         Время ожидания: {{Reports.ttw}} часов<br />
         {% else %}
@@ -52,10 +47,11 @@
         Кол-во авто: {{Reports.carcount}}<br />
         {% endif %}
         {% if Reports.pcount %}
-        Кол-во людей: {{Reports.pcount}}
+        Кол-во людей: {{Reports.pcount}}<br />
         {% endif %}
-        {% endif %}
+        {% if Reports.comment %}Комментарий: {{Reports.comment}}<br />{% endif %}<br />
         {% endfor %}
+        <br />
     </div>
     <div style="margin-top:100px;">
             <a href="/">Вернуться на Главную страницу - карту.</a>

@@ -9,20 +9,22 @@ def showmap(request):
     posts = Kpps.objects.all()
     geomap = geomap_context(
         Kpps.objects.all(),
-        map_zoom=5,
-        map_longitude='71.430557',
-        map_latitude='51.148239',
-        map_height="750px")
+        map_zoom=6,
+        map_longitude='64.430557',
+        map_latitude='50.148239',
+        map_height="1000px")
     context = {'posts': posts}
     # appenddicts = geomap | context  # Соединяем два дикта - контекст меток на карте и контекст значений
     appenddicts = {**geomap, **context}
-    return render(request, 'views/list.html', appenddicts)
+    return render(request, 'views/block.html', appenddicts)
 
 
 def showkpp(request, pk):
     report = Reports.objects.filter(kpp=pk)
+    lastreports = Reports.objects.filter(kpp=pk).order_by('-id')[:3:1]
     avgttw = Reports.objects.filter(kpp=pk).aggregate(ttw=Avg('ttw'))
     avgttw = avgttw['ttw']
+    avgttw = round(avgttw, 1)
     carcount = Reports.objects.filter(kpp=pk).aggregate(cars=Avg('carcount'))
     carcount = carcount['cars']
     carcount = int(carcount)
@@ -33,10 +35,11 @@ def showkpp(request, pk):
     context = (
         {
             'report': report,
+            'lastreports': lastreports,
             'post': post,
             'avgttw': avgttw,
             'carcount': carcount,
             'pcount': pcount,
         }
     )
-    return render(request, 'views/post.html', context)
+    return render(request, 'views/postblock.html', context)
