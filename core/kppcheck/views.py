@@ -16,7 +16,7 @@ def showmap(request):
     context = {'posts': posts}
     # appenddicts = geomap | context  # Соединяем два дикта - контекст меток на карте и контекст значений
     appenddicts = {**geomap, **context}
-    return render(request, 'views/block.html', appenddicts)
+    return render(request, 'views/list.html', appenddicts)
 
 
 def showkpp(request, pk):
@@ -42,4 +42,4 @@ def showkpp(request, pk):
             'pcount': pcount,
         }
     )
-    return render(request, 'views/postblock.html', context)
+    return render(request, 'views/post.html', context)
