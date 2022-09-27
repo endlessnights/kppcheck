@@ -43,3 +43,7 @@ def showkpp(request, pk):
         }
     )
     return render(request, 'views/post.html', context)
+
+
+def adsinfo(request):
+    return render(request, 'views/ads.html')

@@ -34,7 +34,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-6 m-3">
+    <div class="col-lg-4 m-3">
         <h4>Последние 3 отчета:</h4>
         {% for Reports in lastreports %}
         <h6>Отчет от {{Reports.created_date}}:</h6>
@@ -52,6 +52,12 @@
         {% if Reports.comment %}Комментарий: {{Reports.comment}}<br />{% endif %}<br />
         {% endfor %}
         <br />
+    </div>
+    <div class="col-lg-6 m-3">
+        <h4>Полезные ресурсы:</h4>
+        <li><a href="https://t.me/rfinkz" target="_blank">Россияне в Казахстане</a></li>
+        <li><a href="https://t.me/kzBorderFeedback_bot" target="_blank">Отчет, также, можно отправить сюда</a></li>
+        <h4 class="mt-3"><a href="/ads">Здесь могла быть Ваша РЕКЛАМА</a></h4>
     </div>
     <div style="margin-top:100px;">
             <a href="/">Вернуться на Главную страницу - карту.</a>
