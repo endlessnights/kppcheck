@@ -8,8 +8,11 @@
 </head>
 <div class="row">
     <div class="col-lg-12">
+        <h3 class="m-3"><a href="https://meetkz.com/kpp">Сервис переехал на новый адрес: MeetKZ.com/kpp</a></h3>
+    </div>
+    <div class="col-lg-12">
         <div class="map">
-            <div style="width:100%;height:800px;">{% include "geomap/common.html" %}</div>
+            <div style="width:100%;height:400px;max-height: 50%;">{% include "geomap/common.html" %}</div>
         </div>
     </div>
     <div class="col-lg-12">
@@ -17,13 +20,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
-                            {% if Kpps.id %}
-                            <iframe name="iframe1" src="kpp/{{Kpps.id}}" style="width:100%" height="450" scrolling="yes">
+                            <iframe id="iframe1" name="iframe1" src="kpp/{{Kpps.id|default:1}}" width="100%" height="650" align="left">
                             </iframe>
-                            {% else %}
-                            <iframe name="iframe1" src="kpp/1" width="100%" height="450" align="left">
-                            </iframe>
-                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -33,5 +31,27 @@
 
 {% endblock %}
 </body>
+<script>
 
+    {% block page_script %}
+    var featureListener = function ( event ) {
+    console.log("featureListenerCalled");
+    alert("Feature Listener Called");
+};
+
+map.on('click', function(event) {
+
+    map.forEachFeatureAtPixel(event.pixel, function(feature,layer) {
+        const feature_name = feature.getProperties().name;
+        const regex = /href='(.*)' /;
+        if ((m = regex.exec(feature_name)) !== null) {
+            const kpp_url = m[1];
+            document.getElementById('iframe1').src = kpp_url;
+        }
+    });
+});
+
+{% endblock %}
+
+</script>
 </html>
