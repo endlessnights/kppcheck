@@ -6,23 +6,14 @@
 <body>
 {% block content %}
 <title>Статистика КПП {{post.name}}</title>
-<div class="row m-3">
-    <div class="col-lg-4">
-        <a href="/kpp/{{post.id}}" target="_blank"><button type="button" class="btn btn-success"><b>Смотреть больше информации по КПП</b></button></a><br />
-        КПП: {{post.name}}<br/>
-        Населенные пункты: {{post.address}}<br />
-        {% if post.worktime %} Часы работы: {{post.worktime}}<br />{% endif %}
-        {% if avgttw %}
-        Время ожидания: ≈ {{avgttw}} часов<br/>
-        {% else %}
-        Время ожидания: Неизвестно<br/>
-        {% endif %}
-        {% if carcount %}
-        Кол-во авто: ≈ {{carcount}}<br/>
-        {% endif %}
-        {% if pcount %}
-        Кол-во людей: ≈ {{pcount}}<br/>
-        {% endif %}
+<div class="row">
+    <div class="col-lg-4 col-m-12">
+        <a href="/kpp/{{post.id}}" target="_blank"><button type="button" class="btn btn-success"><b>КПП: {{post.name}}</b></button></a><br />
+        <p>Населенные пункты: {{post.address}}</p>
+        <p>{% if post.worktime %} Часы работы: {{post.worktime}}<br />{% endif %}</p>
+        <p>{% if avgttw %} Время ожидания: ≈ {{avgttw}} часов{% else %} Время ожидания: Неизвестно {% endif %}</p>
+        <p>{% if carcount %} Кол-во авто: ≈ {{carcount}} {% endif %}</p>
+        <p>{% if pcount %} Кол-во людей: ≈ {{pcount}} {% endif %} </p>
         <a href="https://t.me/pycarrot2" target="_blank">По вопросам и предложениям</a><br />
         <a href="https://bnb.geekcv.io" target="_blank">Поиск койко-места/ночлег в Казахстане</a><br />
         <a href="https://exrates.geekcv.io" target="_blank">График и обменный курс МИР Рубль-Тенге</a>
